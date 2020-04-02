@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:weightSum="100"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center_vertical">
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:background="?attr/selectableItemBackground"
+        android:id="@+id/toolbar_back_arrow"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="85"
+        android:id="@+id/sender"
+        android:text="title of note"
+        android:textColor="#FFF"
+        android:layout_marginStart="15dp"
+        android:textSize="23sp" />
+
+</LinearLayout>
