@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="85"
         android:id="@+id/sender"
-        android:text="title of note"
+        android:text="Sender"
         android:textColor="#FFF"
         android:layout_marginStart="15dp"
         android:textSize="23sp" />

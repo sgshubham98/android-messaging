@@ -1,21 +1,28 @@
 package com.example.messagingapp.models;
 
-//@Entity(tableName = "message")
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "message")
 public class Message {
 
-//    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
-//    @NonNull
-//    @ColumnInfo(name = "sender")
+    @NonNull
+    @ColumnInfo(name = "sender")
     private String sender;
-//    @NonNull
-//    @ColumnInfo(name = "last_message")
+    @NonNull
+    @ColumnInfo(name = "last_message")
     private String lastMessage;
-//    @NonNull
-//    @ColumnInfo(name = "timestamp")
+    @NonNull
+    @ColumnInfo(name = "timestamp")
     private String timestamp;
 
+    @Ignore
     public Message() {
     }
 
