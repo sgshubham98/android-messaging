@@ -1,14 +1,18 @@
 package com.example.messagingapp;
+import android.Manifest;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.messagingapp.adapters.MessagesRecyclerAdapter;
 import com.example.messagingapp.models.Message;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
         insertMessages();
         setSupportActionBar((Toolbar)findViewById(R.id.message_toolbar));
         setTitle("Messaging App");
+        checkForSmsPermission();
     }
 
     private void retrieveMessages() {
@@ -83,5 +88,26 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
     public void onClick(View view) {
         Intent intent = new Intent(this, NewMessage.class);
         startActivity(intent);
+    }
+
+    private void checkForSmsPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
+        }
+        else{
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_SEND_SMS: {
+                if (permissions[0].equalsIgnoreCase(Manifest.permission.SEND_SMS) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permissions granted", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }
