@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
         findViewById(R.id.fab).setOnClickListener(this);
         initRecyclerView();
         messageRepository = new MessageRepository(this);
-//        retrieveMessages();
-        insertMessages();
+        retrieveMessages();
         setSupportActionBar((Toolbar)findViewById(R.id.message_toolbar));
         setTitle("Messaging App");
         checkForSmsPermission();
@@ -93,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
     private void checkForSmsPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
-        }
-        else{
         }
     }
 

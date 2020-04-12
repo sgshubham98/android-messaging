@@ -10,16 +10,24 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.messagingapp.MainActivity;
+import com.example.messagingapp.models.Message;
+import com.example.messagingapp.persistence.MessageRepository;
+
 public class SmsReciever extends BroadcastReceiver {
     private static final String TAG = SmsReciever.class.getSimpleName();
     public static final String pdu_type = "pdus";
+    private Message newMessage;
+    static MessageRepository messageRepository;
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onReceive(Context context, Intent intent) {
+        messageRepository = new MessageRepository(context);
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs;
         String strMessage = "";
+        newMessage = new Message();
         String format = bundle.getString("format");
         Object[] pdus = (Object[]) bundle.get(pdu_type);
         if (pdus != null) {
@@ -35,6 +43,10 @@ public class SmsReciever extends BroadcastReceiver {
                 strMessage += " :" + msgs[i].getMessageBody() + "\n";
                 Log.d(TAG, "onReceive: " + strMessage);
                 Toast.makeText(context, strMessage, Toast.LENGTH_LONG).show();
+                newMessage.setSender(msgs[i].getOriginatingAddress());
+                newMessage.setLastMessage(strMessage);
+                newMessage.setTimestamp("Apr 12");
+                messageRepository.insertMessageTask(newMessage);
             }
         }
     }

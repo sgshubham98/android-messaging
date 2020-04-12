@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.example.messagingapp.models.Message;
 
-@Database(entities = {Message.class}, version = 1)
+@Database(entities = {Message.class}, version = 2)
 public abstract class MessageDatabase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "message_app_db";
