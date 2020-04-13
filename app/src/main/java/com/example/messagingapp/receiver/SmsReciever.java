@@ -10,7 +10,6 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.messagingapp.MainActivity;
 import com.example.messagingapp.models.Message;
 import com.example.messagingapp.persistence.MessageRepository;
 
@@ -18,7 +17,7 @@ public class SmsReciever extends BroadcastReceiver {
     private static final String TAG = SmsReciever.class.getSimpleName();
     public static final String pdu_type = "pdus";
     private Message newMessage;
-    static MessageRepository messageRepository;
+    MessageRepository messageRepository;
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override

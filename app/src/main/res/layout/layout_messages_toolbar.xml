@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="85"
-        android:id="@+id/sender"
+        android:id="@+id/toolbarTitle"
         android:text="Messaging App"
         android:textColor="#FFF"
         android:layout_marginStart="15dp"
