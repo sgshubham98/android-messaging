@@ -6,6 +6,7 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
+import com.example.messagingapp.models.Conversation;
 import com.example.messagingapp.models.Message;
 
 import java.util.List;
@@ -14,11 +15,18 @@ import java.util.List;
 public interface MessageDao {
 
     @Insert
-    long[] insertMessages(Message...messages);
+    void insertMessages(Message...messages);
 
-    @Query("SELECT * FROM message")
+    @Insert
+    void insertConversation(Conversation...conversations);
+
+    @Query("SELECT * FROM message Order By timestamp DESC")
     LiveData<List<Message>> getMessages();
+
+    @Query("Select * from conversation where number = :contactNumber")
+    LiveData<List<Conversation>> getConversation(String contactNumber);
 
     @Delete
     int delete(Message...messages);
+
 }

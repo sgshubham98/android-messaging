@@ -43,8 +43,8 @@ public class SmsReciever extends BroadcastReceiver {
                 Log.d(TAG, "onReceive: " + strMessage);
                 Toast.makeText(context, strMessage, Toast.LENGTH_LONG).show();
                 newMessage.setSender(msgs[i].getOriginatingAddress());
-                newMessage.setLastMessage(strMessage);
-                newMessage.setTimestamp("Apr 12");
+                newMessage.setLastMessage(msgs[i].getMessageBody());
+                Long time = msgs[i].getTimestampMillis();
                 messageRepository.insertMessageTask(newMessage);
             }
         }

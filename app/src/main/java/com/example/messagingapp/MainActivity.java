@@ -58,17 +58,17 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
         });
     }
 
-    private void insertMessages(){
-        for (int i=0; i<50; i++){
-            Message message = new Message();
-            message.setSender("sender #"+i);
-            message.setLastMessage("last was this #"+i);
-            message.setTimestamp("hsaj");
-            message.setId(i);
-            mMessages.add(message);
-        }
-        messagesRecyclerAdapter.notifyDataSetChanged();
-    }
+//    private void insertMessages(){
+//        for (int i=0; i<50; i++){
+//            Message message = new Message();
+//            message.setSender("sender #"+i);
+//            message.setLastMessage("last was this #"+i);
+//            message.setTimestamp("hsaj");
+//            message.setId(i);
+//            mMessages.add(message);
+//        }
+//        messagesRecyclerAdapter.notifyDataSetChanged();
+//    }
 
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -79,13 +79,13 @@ public class MainActivity extends AppCompatActivity implements MessagesRecyclerA
 
     @Override
     public void onMessageClick(int position){
-        Intent intent = new Intent(this, Conversation.class);
+        Intent intent = new Intent(this, ConversationActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(this, NewMessage.class);
+        Intent intent = new Intent(this, NewMessageActivity.class);
         startActivity(intent);
     }
 

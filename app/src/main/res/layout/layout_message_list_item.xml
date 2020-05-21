@@ -33,10 +33,10 @@
             android:textSize="20sp" />
 
         <TextView
-            android:layout_width="194dp"
+            android:id="@+id/last_message"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sender"
-            android:id="@+id/last_message"
             android:layout_weight="24"
             android:lines="1"
             android:text="This content should be long becuse it was supposed to be long"

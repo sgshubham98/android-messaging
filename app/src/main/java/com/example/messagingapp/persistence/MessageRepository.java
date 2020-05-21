@@ -24,6 +24,10 @@ public class MessageRepository {
         return messageDatabase.getMessageDao().getMessages();
     }
 
+//    public LiveData<List<Message>> retrieveConvoTask(){
+//        return messageDatabase.getMessageDao().getConvo();
+//    }
+
     public void deleteMessageTask(Message message){
         new DeleteAsyncTask(messageDatabase.getMessageDao()).execute(message);
     }

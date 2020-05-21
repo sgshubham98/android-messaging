@@ -31,7 +31,7 @@ public class MessagesRecyclerAdapter extends RecyclerView.Adapter<MessagesRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MessagesRecyclerAdapter.ViewHolder holder, int position) {
-        holder.timestamp.setText(mMessages.get(position).getTimestamp());
+        holder.timestamp.setText(mMessages.get(position).getTimestamp().toString());
         holder.sender.setText(mMessages.get(position).getSender());
         holder.last_message.setText(mMessages.get(position).getLastMessage());
     }

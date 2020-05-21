@@ -5,9 +5,10 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.example.messagingapp.models.Conversation;
 import com.example.messagingapp.models.Message;
 
-@Database(entities = {Message.class}, version = 1)
+@Database(entities = {Message.class, Conversation.class}, version = 1)
 public abstract class MessageDatabase extends RoomDatabase {
 
     public static final String DATABASE_NAME = "message_app_db";
