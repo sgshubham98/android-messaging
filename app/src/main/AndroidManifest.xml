@@ -29,6 +29,7 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
         </receiver>
+        <uses-library android:name="android.test.runner" android:required="false" />
     </application>
 
 </manifest>

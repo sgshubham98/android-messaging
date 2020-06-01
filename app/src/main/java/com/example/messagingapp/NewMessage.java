@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.messagingapp.receiver.DeliveryReciever;
 import com.example.messagingapp.receiver.SentReciever;
 
+import java.util.regex.Pattern;
+
 public class NewMessage extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editPhoneNumber;
@@ -46,19 +48,19 @@ public class NewMessage extends AppCompatActivity implements View.OnClickListene
         if (view.getId() == R.id.btNewSend) {
             phoneNumber = editPhoneNumber.getText().toString();
             smsMessage = editSMSMessage.getText().toString();
-            if (phoneNumber != null && phoneNumber.trim().length() > 0) {
+            if (phoneNumber != null && isValidMobile(phoneNumber)) {
                 if (smsMessage != null && smsMessage.trim().length() > 0) {
                     sendSMSNow();
+                } else{
+                    Toast.makeText(this, "Please enter a non-empty message", Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    Toast.makeText(this, "Please enter valid message and phone number", Toast.LENGTH_LONG).show();
-                }
+            } else {
+                Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     private void sendSMSNow(){
-
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
 
@@ -70,6 +72,13 @@ public class NewMessage extends AppCompatActivity implements View.OnClickListene
 
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phoneNumber, null, smsMessage, sentPI, deliveredPI);
-
     }
+
+    private boolean isValidMobile(String phone) {
+        if(!Pattern.matches("[a-zA-Z]+", phone)) {
+            return phone.length() > 6 && phone.length() <= 13;
+        }
+        return false;
+    }
+
 }
